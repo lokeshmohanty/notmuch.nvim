@@ -5,10 +5,10 @@ let r = v:lua.require('notmuch.refresh')
 let s = v:lua.require('notmuch.sync')
 let tag = v:lua.require('notmuch.tag')
 
-command -buffer -range -complete=customlist,v:lua.require'notmuch.completion'.comp_tags -nargs=+ TagAdd :call tag.thread_add_tag(<q-args>, <line1>, <line2>)
-command -buffer -range -complete=customlist,v:lua.require'notmuch.completion'.comp_tags -nargs=+ TagRm :call tag.thread_rm_tag(<q-args>, <line1>, <line2>)
-command -buffer -range -complete=customlist,v:lua.require'notmuch.completion'.comp_tags -nargs=+ TagToggle :call tag.thread_toggle_tag(<q-args>, <line1>, <line2>)
-command -buffer -range DelThread :call tag.thread_add_tag("del", <line1>, <line2>) | :call tag.thread_rm_tag("inbox", <line1>, <line2>)
+command! -buffer -range -complete=customlist,v:lua.require'notmuch.completion'.comp_tags -nargs=+ TagAdd :call tag.thread_add_tag(<q-args>, <line1>, <line2>)
+command! -buffer -range -complete=customlist,v:lua.require'notmuch.completion'.comp_tags -nargs=+ TagRm :call tag.thread_rm_tag(<q-args>, <line1>, <line2>)
+command! -buffer -range -complete=customlist,v:lua.require'notmuch.completion'.comp_tags -nargs=+ TagToggle :call tag.thread_toggle_tag(<q-args>, <line1>, <line2>)
+command! -buffer -range DelThread :call tag.thread_add_tag("del", <line1>, <line2>) | :call tag.thread_rm_tag("inbox", <line1>, <line2>)
 
 nnoremap <buffer> <CR> <Cmd>call nm.show_thread()<CR>
 nnoremap <buffer> r <Cmd>call r.refresh_search_buffer()<CR>
