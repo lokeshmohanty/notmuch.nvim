@@ -21,7 +21,8 @@
 local c = {}
 local config = require('notmuch.config')
 local ffi = require("ffi")
-local nm = ffi.load("notmuch")
+
+local nm = ffi.load(vim.fn.exepath("notmuch"):gsub("/bin/notmuch$", "/lib/libnotmuch.so"))
 
 ffi.cdef[[
   typedef struct _notmuch_database notmuch_database_t;
